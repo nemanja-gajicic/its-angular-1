@@ -4,7 +4,7 @@
         <div class="form-floating">
             <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email"
                 [(ngModel)]="jsonIn.username" required>
-            <label for="emailInput">Email</label>
+            <label for="emailInput">Email (*)</label>
         </div>
         <div class="form-floating mt-2">
             <div class="input-group mb-3">
@@ -12,7 +12,7 @@
                     <input [type]="showPassword?'text':'password'" 
                         class="form-control mb-0" id="passwordInput" email autofocus name="passwordInput"
                         placeholder="your password..." [(ngModel)]="jsonIn.password" required>
-                    <label for="passwordInput">Password</label>
+                    <label for="passwordInput">Password (*)</label>
                 </div>
                 <span class="input-group-text" role="button" (click)="showPassword = !showPassword">
                     👁
