@@ -7,7 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './drink.component.html',
 })
 export class DrinkComponent implements OnInit {
-  drink:any = {};
+  drink:any = {
+    ingredients: [],
+    instructions : []
+  };
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) {}
 
@@ -17,7 +20,27 @@ export class DrinkComponent implements OnInit {
         .get('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + id)
         .subscribe( (response: any) => {
           this.drink = response.drinks[0];
-        
+          this.drink.ingredients = [];
+          this.drink.instructions = [];
+          Object.keys(this.drink).forEach( (key) => {
+            if(key.startsWith('strIngredient') && this.drink[key]) {
+              const index = key.replace('strIngredient', '');
+              console.log(index);
+              this.drink.ingredients.push({
+                name: this.drink[key],
+                measure: this.drink['strMeasure' + index]
+              });
+            }
+            if(key.startsWith('strInstructions') && this.drink[key]) {
+              let lang = key.replace('strInstructions', '');
+              if (!lang) {
+                lang = 'EN';
+              }
+              console.log(lang);
+              this.drink.instructions[lang] = this.drink[key]
+            }
+          });
+          console.log(this.drink);
         })
 
   }
