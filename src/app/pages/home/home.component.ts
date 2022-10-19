@@ -1,34 +1,24 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
-  jsonIn = {
-    tipoCliente: 'PF',
-    nome: 'nome',
-    cognome: 'cognome',
-    ragioneSociale: 'ragione',
-  }
+export class HomeComponent implements OnInit {
+  drinks:any[] = [];
 
-  pulisciDenominazione() {
-    if(this.jsonIn.tipoCliente === 'PF') {
-      this.jsonIn.ragioneSociale = '';
-    } else if(this.jsonIn.tipoCliente === 'PG') {
-      this.jsonIn.nome = '';
-      this.jsonIn.cognome = '';
-    } 
-  }
+  constructor(private httpClient: HttpClient) {}
 
-  salva() {
-    const jsonIn = JSON.parse(JSON.stringify(this.jsonIn));
-    if(jsonIn.tipoCliente === 'PF') {
-      delete jsonIn.ragioneSociale;
-    } else if(jsonIn.tipoCliente === 'PG') {
-      delete jsonIn.nome;
-      delete jsonIn.cognome;
-    } 
-    // chiamataBackend(jsonIn);
+  ngOnInit(): void {
+    console.log('oninit');
+    this.httpClient
+        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+        .subscribe( (response: any) => {
+          console.log(response);
+          this.drinks = response.drinks;
+          
+        })
+
   }
 }
