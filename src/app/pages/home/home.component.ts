@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/_service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   drinks:any[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.httpClient
-        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
-        .subscribe( (response: any) => {
-          this.drinks = response.drinks;
-          
-        })
-
+    this.apiService.searchCocktailByFirstLetter('a')
+                  .subscribe( (response: any) => {
+                    console.log(response);
+                    this.drinks = response.drinks;
+                  })
   }
 }
