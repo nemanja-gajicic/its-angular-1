@@ -7,14 +7,20 @@ import { ApiService } from 'src/app/_service/api.service';
 })
 export class HomeComponent implements OnInit {
   drinks:any[] = [];
+  letters =  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  firstLetter = '';
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.searchCocktailByFirstLetter('a')
-                  .subscribe( (response: any) => {
-                    console.log(response);
-                    this.drinks = response.drinks;
-                  })
+    this.changeFirstLetter('A');
+  }
+
+  changeFirstLetter(letter: string) {
+    this.firstLetter = letter;
+    this.apiService.searchCocktailByFirstLetter(this.firstLetter)
+    .subscribe( (response: any) => {
+      this.drinks = response.drinks;
+    })
   }
 }
