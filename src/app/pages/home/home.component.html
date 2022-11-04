@@ -18,23 +18,15 @@
     </li>
   </ul>
 </nav>
-
+<h1>Featured</h1>
+<app-card-drink class=""  [drink]="drinks[0]" [featured]="true"></app-card-drink>
 <h1>Top Drinks</h1>
 <div class="row">
   <div class="col-sm-12 col-md-4 col-lg-3 my-2"
       *ngFor="let drink of drinks"
-      role="button"
-      [routerLink]="'/drink/' + drink.idDrink">
-    <div class="card">
-      <img [src]="drink.strDrinkThumb" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{ drink.strDrink}}</h5>
-        
-        <div  class="btn btn-primary">Dettaglio</div>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">{{ drink.strCategory }}</small>
-      </div>
-    </div>
+      >
+      <app-card-drink 
+          [drink]="drink"
+      ></app-card-drink>
   </div>
 </div>

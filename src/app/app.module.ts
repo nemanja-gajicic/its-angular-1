@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DrinkComponent } from './pages/drink/drink.component';
 import { SearchComponent } from './pages/search/search.component';
+import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SearchComponent } from './pages/search/search.component';
     HomeComponent,
     DrinkComponent,
     SearchComponent,
+    CardDrinkComponent,
   ],
   imports: [
     BrowserModule,
