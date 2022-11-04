@@ -23,4 +23,9 @@ export class HomeComponent implements OnInit {
       this.drinks = response.drinks;
     })
   }
+
+  onCardSelectChange(drink: any, $event: boolean) {
+    console.log("drink", drink, "selezionato?", $event);
+    drink.selected = $event;
+  }
 }

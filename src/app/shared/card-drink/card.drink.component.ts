@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-drink',
@@ -8,4 +8,13 @@ export class CardDrinkComponent {
 
   @Input() drink: any;
   @Input() featured = false;
+  @Output() onSelectChange: EventEmitter<boolean> = new EventEmitter();
+
+  constructor() {
+    console.log('CREATO');
+  }
+
+  onSelect($event: any) {
+    this.onSelectChange.emit($event.currentTarget.checked);
+  }
 }

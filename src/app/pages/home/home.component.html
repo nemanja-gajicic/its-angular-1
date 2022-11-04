@@ -26,7 +26,9 @@
       *ngFor="let drink of drinks"
       >
       <app-card-drink 
-          [drink]="drink"
-      ></app-card-drink>
+              [drink]="drink"
+              (onSelectChange)="onCardSelectChange(drink, $event)"
+              ></app-card-drink>
+              <!-- (selected)="onSelect(drink)" -->
   </div>
 </div>
