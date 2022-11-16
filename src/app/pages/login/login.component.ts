@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   jsonIn = {
-    username: 'pippo',
+    username: '',
     password: '',
     rememberMe: false,
   }

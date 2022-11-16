@@ -15,7 +15,7 @@ export class AuthService {
                       localStorage['token'] = response.token;
                       return response.currentUser;
                     }
-                  )
+                  ))
     }
 
     isLogged(): boolean {

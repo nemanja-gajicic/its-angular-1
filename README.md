@@ -1,5 +1,6 @@
+msy-uiys-aim
+
 Nuova pagina "Ordini"
-    - Campo ricerca per nome, collegamento API www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
     - Lista cocktail in formato "bootstrap list"
         - usare immagine "small", come da doc
         - https://getbootstrap.com/docs/5.2/components/list-group/#checkboxes-and-radios
