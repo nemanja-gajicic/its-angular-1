@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row my-3 gy-4 mx-2">
+        <!-- The navigation strip -->
+        <div class="col-12 p-0 ">
+            <div class="alert alert-secondary d-flex justify-content-around">
+                <h1 class="text-center m-0 display-5">
+                The cocktailDB    
+                </h1>
+                <button 
+                    [routerLink]="['/search']" 
+                    class="btn btn-info align-self-flex-start" 
+                    type="button" 
+                    >Search cocktails
+                </button>
+                <button 
+                    [routerLink]="['/drink/random']"
+                    class="btn btn-primary w-auto" 
+                    >Cocktail of the day
+                </button>
+            </div>
+        </div>
+        <!-- The navigation letters  -->
+        <div class="col-12 p-0 d-flex justify-content-center">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-inline-block">
+                        <ul class="pagination d-flex flex-wrap justify-content-center">
+                            <li 
+                            *ngFor="let letter of alphabet" 
+                            [class.active]="letter === letterToSearch" 
+                            class="page-item" [routerLink]="['/drinks/',letter]">
+                                <a
+                                role="button" 
+                                class="page-link"
+                                [class.active]="letter === letterToSearch"
+                                >{{letter}}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Show all cocktails in the drinks array as cards  -->
+        <cocktails 
+            [cocktails] = "drinks" 
+            [cocktailNotFound]="errorNotFound">
+        </cocktails>  
+    </div>
+</div>

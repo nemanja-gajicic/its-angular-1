@@ -1,12 +1,10 @@
 export interface Drink {
-    strDrinkThumb: string,
-    strDrink: string,
-    strCategory: string,
-    ingredients: {
-        name: string,
-        measure: string,
-    }[],
-    instructions: any,
-    
+    idDrink: string;
+    strDrinkThumb: string;
+    strDrink: string;
+    strAlcoholic: string;
+    strInstructions : string;
 }
-  
+export interface Drinks {
+    drinks: Drink[];
+}

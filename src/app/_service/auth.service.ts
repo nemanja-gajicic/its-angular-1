@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-
+//Thanks for the example, but we don't have a backend that could managed these 
+// requests and the CocktailDB API doesn't offer such options 
 @Injectable({
   providedIn: 'root',
 })

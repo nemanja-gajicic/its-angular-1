@@ -1,31 +1,31 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
-})
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+  })
+
 export class LoginComponent {
-  jsonIn = {
-    username: '',
-    password: '',
-    rememberMe: false,
+  data= {
+    username:'',
+    password:'',
+    rememberMe: false
   }
-  @ViewChild('loginForm') loginForm!: NgForm;
-  showErrors = false;
+
   showPassword = false;
-  
-  constructor(private router: Router) {}
-
-  signIn() {
-    if (this.loginForm.form.invalid) {
-      this.showErrors = true;
-    } else {
-      this.router.navigateByUrl('/home');
-    }
+  invalidForm = false;
+  constructor(private readonly router: Router) { }
+  submit(formIstance: NgForm){
+   if (formIstance.form.valid) {
+     console.log(formIstance.form.invalid);
+     console.log(formIstance.valid);
+     
+    this.router.navigate(["drinks"])
+   }
+   else{
+     this.invalidForm = true;
+   }
   }
-
-
 }

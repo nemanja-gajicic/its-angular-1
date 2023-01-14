@@ -1,36 +1,51 @@
-<main class="form-signin w-100 m-auto mt-3">
-    <form class="needs-validation" 
-        [class.was-validated]="showErrors" 
-        #loginForm="ngForm">
-        <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+<div class="row">
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="submit(loginForm)"
+      class="needs-validation col-10 col-md-6 col-lg-4 mx-auto mt-5"
+      [class.was-validated]="invalidForm"
+    >
+      <div class="form-floating mb-2">
+        <input
+          class="form-control"
+          autofocus
+          type="email"
+          id="username"
+          #email="ngModel"
+          placeholder="insert email"
+          name="username"
+          [(ngModel)]="data.username"
+          required
+        />
+        <label for="username">Username</label>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="input-group">
         <div class="form-floating">
-            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email"
-                [(ngModel)]="jsonIn.username" required>
-            <label for="emailInput">Email (*)</label>
+          <input
+            class="form-control"
+            [type]="showPassword ? 'text' : 'password'"
+            id=" password"
+            name="password"
+            placeholder="insert password"
+            [(ngModel)]="data.password"
+            required
+          />
+          <label for="password ">Password</label>
         </div>
-        <div class="form-floating mt-2">
-            <div class="input-group mb-3">
-                <div class="form-floating">
-                    <input [type]="showPassword?'text':'password'" 
-                        class="form-control mb-0" id="passwordInput" email autofocus name="passwordInput"
-                        placeholder="your password..." [(ngModel)]="jsonIn.password" required>
-                    <label for="passwordInput">Password (*)</label>
-                </div>
-                <span class="input-group-text" role="button" (click)="showPassword = !showPassword">
-                    👁
-                </span>
-            </div>
-        </div>
-
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="rememberMe" [(ngModel)]="jsonIn.rememberMe"> Remember me
-            </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="button" (click)="signIn()">
-            Sign in
+        <button 
+          class="btn btn-primary rounded-end" 
+          type="button" 
+          (click)="showPassword = !showPassword" 
+          type="button">X
         </button>
-        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" name="rememberMe" id="rememberMe" class="form-check-input"/>
+        <label for="rememberMe" class="form-check-label">Remember me</label>
+      </div>
+      <button class="btn btn-primary w-100" type="submit">Send</button>
     </form>
-</main>
+  </div>
+  

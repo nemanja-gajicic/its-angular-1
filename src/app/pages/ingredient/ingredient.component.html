@@ -1,0 +1,13 @@
+<a class="btn btn-primary m-3" routerLink="/drinks">Back to drinks list</a>
+<div class="container-lg">
+    <div class="row g-4 d-flex justify-content-center justify-content-md-start">
+        <h1>{{ ingredient.strIngredient }} </h1>
+        <h2>Cocktails that contain {{ ingredient.strIngredient?.toLowerCase() }}</h2>
+        <cocktails class="mb-3" [cocktails]="drinks"></cocktails>
+        <h3>Description</h3>
+        <p> {{ ingredient.strDescription }}</p>
+        <h3>Type</h3>
+        <p> {{ ingredient.strType }}</p>
+    </div>
+</div>
+

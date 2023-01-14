@@ -1,36 +1,24 @@
-<nav class="navbar bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">The cocktail DB</a>
-  </div>
-</nav>
-
-<div class="card-group m-3">
-  <div class="card text-bg-dark" style="max-width: 540px;">
-    <img [src]="drink.strDrinkThumb" class="img-fluid rounded-start">
-    <div class="card-img-overlay">
+<a class="btn btn-primary m-3" routerLink="/drinks">Back to drinks list</a>
+<div class="card mb-3" *ngIf="drink">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="drink.strDrinkThumb" class="img-fluid" alt="...">
+    </div>
+    <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ drink.strDrink}} ({{ drink.strCategory }})</h5>
+        <h2 class="card-header">{{drink.strDrink}}</h2>
+        <p class="card-text text-muted mt-3">{{drink.strInstructions}}</p>
+        <h3 class="text-center mt-2">Ingredients</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let ingredient of ingredientsList">
+            <a class="link-primary"
+              [routerLink]="['/ingredient', replaceSpaceWithUnderscore(ingredient.name)]"
+              >{{ingredient.name}}
+            </a>
+            : {{ingredient.measure}}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Ingredients</h5>
-      <ul>
-        <li *ngFor="let ingredient of drink.ingredients">
-          {{ ingredient.name }}: {{ ingredient.measure }}
-        </li>
-      </ul>
-      <!-- <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Instructions</h5>
-      
-      <p class="card-text"> {{ drink.instructions['EN'] }} </p>
-    </div>
-  </div>
-  
 </div>
